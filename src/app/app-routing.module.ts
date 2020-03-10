@@ -5,6 +5,11 @@ const routes: Routes = [
   {
     path: "home",
     loadChildren: () => import("./core/core.module").then(m => m.CoreModule)
+  },
+  {
+    path: "new-note",
+    loadChildren: () =>
+      import("./new-note/new-note.module").then(m => m.NewNoteModule)
   }
 ];
 
