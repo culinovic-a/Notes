@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { AuthService } from "../services/auth.service";
-import { Router } from "@angular/router";
-import { NgZone } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { NgZone } from '@angular/core';
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"]
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   constructor(
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     this.authService
       .signInWithGoogle()
       .then(res => {
-        this.ngZone.run(() => this.router.navigate(["layout"]));
+        this.ngZone.run(() => this.router.navigate(['new-note']));
       })
       .catch(err => console.log(err));
   }
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.authService
       .signInWithGithub()
       .then(res => {
-        this.ngZone.run(() => this.router.navigate(["layout"]));
+        this.ngZone.run(() => this.router.navigate(['new-note']));
       })
       .catch(err => console.log(err));
   }
