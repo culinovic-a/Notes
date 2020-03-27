@@ -1,10 +1,10 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { NewNoteComponent } from "./new-note/new-note.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { NewNoteComponent } from './new-note/new-note.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: 'new-note',
     component: NewNoteComponent
   }
 ];
