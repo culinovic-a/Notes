@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { Note } from '../models/note';
 import {
   AngularFirestore,
-  AngularFirestoreCollection
+  AngularFirestoreCollection,
+  DocumentReference,
+  DocumentSnapshot,
+  Action
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -27,36 +30,16 @@ export class NewNoteService {
     );
   }
 
-  // public createNote(newNote: Note) {
-  //   this.firestore.collection("notes").add(newNote);
-  // }
-
-  public createNote(newNote: Note) {
-    return new Promise<any>((resolve, reject) => {
-      this.notesCollection.add(newNote).then(
-        res => {},
-        err => reject(err)
-      );
-    });
+  public createNote(newNote: Note): Promise<DocumentReference> {
+    return this.notesCollection.add(newNote);
   }
-
-  // getNotes(): Observable<Note> {
-  //   return this.firestore.collection("notes").snapshotChanges();
-  // }
 
   public getNotes() {
     return this.notes;
   }
 
-  // public getNote() {
-  //   return this.notesCollection
-  //     .doc()
-  //     .snapshotChanges();
-  // }
-
-  public getNote(id: string) {
-    return new Promise<any>((resolve, reject) => {
-      this.notesCollection.doc('notes/' + id).snapshotChanges();
-    });
+  public getNote(id: string): Observable<Action<DocumentSnapshot<any>>> {
+    // todo
+    return this.notesCollection.doc('notes/' + id).snapshotChanges();
   }
 }
