@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewNoteModule } from './new-note/new-note.module';
 import { AuthModule } from './auth/auth.module';
+import { NotesModule } from './notes/notes.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,8 @@ import { AuthModule } from './auth/auth.module';
     CoreModule,
     BrowserAnimationsModule,
     NewNoteModule,
-    AuthModule
+    AuthModule,
+    NotesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

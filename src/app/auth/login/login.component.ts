@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     this.authService
       .signInWithGoogle()
       .then(res => {
-        this.ngZone.run(() => this.router.navigate(['new-note']));
+        this.ngZone.run(() => this.router.navigateByUrl('/notes'));
       })
       .catch(err => console.log(err));
   }
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.authService
       .signInWithGithub()
       .then(res => {
-        this.ngZone.run(() => this.router.navigate(['new-note']));
+        this.ngZone.run(() => this.router.navigateByUrl('/notes'));
       })
       .catch(err => console.log(err));
   }

@@ -14,6 +14,15 @@ const routes: Routes = [
     path: 'new-note',
     loadChildren: () =>
       import('./new-note/new-note.module').then(m => m.NewNoteModule)
+  },
+  {
+    path: 'notes',
+    loadChildren: () => import('./notes/notes.module').then(m => m.NotesModule)
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 
