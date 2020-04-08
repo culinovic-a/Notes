@@ -8,10 +8,12 @@ cache:
 script:
   - npm install
   - npm run build
+  - ng build --prod --base-href "https://culinovic-a.github.io/Notes/"
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   keep_history: true
+  local_dir: dist
   on:
     branch: master
