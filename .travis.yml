@@ -8,7 +8,7 @@ cache:
 script:
   - npm install
   - npm run build
-  - ng build --prod --base-href "https://culinovic-a.github.io/Notes/"
+  - ng build --prod docs --base-href "https://culinovic-a.github.io/Notes/"
 deploy:
   provider: pages
   skip_cleanup: true
