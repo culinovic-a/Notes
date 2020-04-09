@@ -8,7 +8,7 @@ cache:
 script:
   - npm install
   - ng build --prod --output-path docs --base-href /Notes/
-  - copy ./dist/index.html ./dist/404.html
+  - cp ./dist/index.html ./dist/404.html
 
 deploy:
   provider: pages
