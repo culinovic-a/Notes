@@ -98,6 +98,10 @@ THE SOFTWARE.
 
 @angular/material/core
 
+@angular/material/dialog
+
+@angular/material/form-field
+
 @angular/material/icon
 
 @angular/material/list
@@ -105,6 +109,8 @@ THE SOFTWARE.
 @angular/material/sidenav
 
 @angular/material/toolbar
+
+@angular/material/tooltip
 
 @angular/platform-browser
 MIT
