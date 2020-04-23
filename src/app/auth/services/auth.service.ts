@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { AngularFireAuth } from "@angular/fire/auth";
-import * as firebase from "firebase/app";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class AuthService {
   private user: Observable<firebase.User>;
@@ -14,7 +14,7 @@ export class AuthService {
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = firebaseAuth.authState;
 
-    this.user.subscribe(user => {
+    this.user.subscribe((user) => {
       if (user) {
         this.userDetails = user;
       } else {

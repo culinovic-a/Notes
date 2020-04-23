@@ -1,6 +1,11 @@
 <p>notes works!</p>
 <div class="fab-container">
-  <button mat-fab color="primary">
+  <button
+    mat-fab
+    color="primary"
+    (click)="openDialog()"
+    matTooltip="Create New Note"
+  >
     <mat-icon>add</mat-icon>
   </button>
 </div>
