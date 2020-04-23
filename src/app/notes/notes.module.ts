@@ -5,6 +5,8 @@ import { NotesRoutingModule } from './notes-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { NewNoteModule } from '../new-note/new-note.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [NotesComponent],
@@ -13,7 +15,9 @@ import { NewNoteModule } from '../new-note/new-note.module';
     NotesRoutingModule,
     MatButtonModule,
     MatIconModule,
-    NewNoteModule
-  ]
+    NewNoteModule,
+    MatDialogModule,
+    MatTooltipModule,
+  ],
 })
 export class NotesModule {}

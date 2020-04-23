@@ -1,1 +1,17 @@
-<p>new-note works!</p>
+<h3>New Note</h3>
+<form [formGroup]="newNoteForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Note Name:</mat-label>
+    <input type="text" matInput formControlName="noteName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Note Text:</mat-label>
+    <textarea matInput formControlName="noteText"></textarea>
+  </mat-form-field>
+
+  <div class="buttons" mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button type="submit" cdkFocusInitial>Submit</button>
+  </div>
+</form>

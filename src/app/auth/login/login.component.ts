@@ -6,7 +6,7 @@ import { NgZone } from '@angular/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   constructor(
@@ -20,18 +20,18 @@ export class LoginComponent implements OnInit {
   signInWithGoogle() {
     this.authService
       .signInWithGoogle()
-      .then(res => {
+      .then((res) => {
         this.ngZone.run(() => this.router.navigateByUrl('/notes'));
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }
 
   signInWithGithub() {
     this.authService
       .signInWithGithub()
-      .then(res => {
+      .then((res) => {
         this.ngZone.run(() => this.router.navigateByUrl('/notes'));
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }
 }

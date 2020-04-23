@@ -18,9 +18,9 @@ import { NotesModule } from './notes/notes.module';
     BrowserAnimationsModule,
     NewNoteModule,
     AuthModule,
-    NotesModule
+    NotesModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
