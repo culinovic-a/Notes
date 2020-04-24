@@ -1,5 +1,5 @@
 export interface Note {
-  name: string;
-  text: string;
+  noteTitle: string;
+  noteText: string;
   timestamp: string;
 }

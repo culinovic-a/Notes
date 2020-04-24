@@ -5,13 +5,13 @@ import {
   AngularFirestoreCollection,
   DocumentReference,
   DocumentSnapshot,
-  Action
+  Action,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NewNoteService {
   notesCollection: AngularFirestoreCollection<Note>;
@@ -21,8 +21,8 @@ export class NewNoteService {
     this.notesCollection = this.firestore.collection('notes');
 
     this.notes = this.notesCollection.snapshotChanges().pipe(
-      map(changes => {
-        return changes.map(a => {
+      map((changes) => {
+        return changes.map((a) => {
           const data = a.payload.doc.data() as Note;
           return data;
         });
