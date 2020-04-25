@@ -12,7 +12,7 @@ export class NewNoteComponent implements OnInit {
   newNoteForm = this.fb.group({
     noteTitle: [''],
     noteText: [''],
-    timestamp: new Date(),
+    timestamp: new Date().toISOString(),
   });
 
   constructor(

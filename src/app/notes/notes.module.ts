@@ -7,9 +7,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { NewNoteModule } from '../new-note/new-note.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NotesListComponent } from './notes-list/notes-list.component';
+import { NotesListItemComponent } from './notes-list-item/notes-list-item.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
-  declarations: [NotesComponent],
+  declarations: [NotesComponent, NotesListComponent, NotesListItemComponent],
   imports: [
     CommonModule,
     NotesRoutingModule,
@@ -18,6 +21,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     NewNoteModule,
     MatDialogModule,
     MatTooltipModule,
+    MatCardModule,
   ],
 })
 export class NotesModule {}

@@ -1,0 +1,10 @@
+.example-card {
+  width: 400px;
+  margin: 20px 0;
+
+  mat-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
