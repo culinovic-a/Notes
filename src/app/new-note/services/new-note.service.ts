@@ -18,7 +18,9 @@ export class NewNoteService {
   notes: Observable<Note[]>;
 
   constructor(public firestore: AngularFirestore) {
-    this.notesCollection = this.firestore.collection('notes');
+    this.notesCollection = this.firestore.collection('notes', (ref) =>
+      ref.orderBy('timestamp', 'desc')
+    );
 
     this.notes = this.notesCollection.snapshotChanges().pipe(
       map((changes) => {
