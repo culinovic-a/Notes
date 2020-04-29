@@ -26,6 +26,7 @@ export class NewNoteService {
       map((changes) => {
         return changes.map((a) => {
           const data = a.payload.doc.data() as Note;
+          data.id = a.payload.doc.id;
           return data;
         });
       })
@@ -43,5 +44,9 @@ export class NewNoteService {
   public getNote(id: string): Observable<Action<DocumentSnapshot<any>>> {
     // todo
     return this.notesCollection.doc('notes/' + id).snapshotChanges();
+  }
+
+  public deleteNote(note: Note) {
+    this.notesCollection.doc(`/${note.id}`).delete();
   }
 }
