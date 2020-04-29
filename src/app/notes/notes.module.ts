@@ -10,9 +10,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NotesListComponent } from './notes-list/notes-list.component';
 import { NotesListItemComponent } from './notes-list-item/notes-list-item.component';
 import { MatCardModule } from '@angular/material/card';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 @NgModule({
-  declarations: [NotesComponent, NotesListComponent, NotesListItemComponent],
+  declarations: [
+    NotesComponent,
+    NotesListComponent,
+    NotesListItemComponent,
+    DeleteModalComponent,
+  ],
   imports: [
     CommonModule,
     NotesRoutingModule,
@@ -23,5 +29,6 @@ import { MatCardModule } from '@angular/material/card';
     MatTooltipModule,
     MatCardModule,
   ],
+  entryComponents: [DeleteModalComponent],
 })
 export class NotesModule {}

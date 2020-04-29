@@ -1,6 +1,7 @@
 <mat-card class="example-card">
   <mat-card-header>
     <mat-card-title>{{ note.noteTitle }}</mat-card-title>
+    <mat-icon (click)="deleteNote(note)">delete</mat-icon>
     <small>{{ note.timestamp | date: 'M/d/yyyy h:mm' }}</small>
   </mat-card-header>
   <mat-card-content>
