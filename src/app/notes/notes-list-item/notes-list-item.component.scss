@@ -1,14 +1,24 @@
 .example-card {
   width: 400px;
-  margin: 20px 0;
+  margin: 0 0 16px;
+  padding: 24px 16px;
+
+  ::ng-deep .mat-card-header-text {
+    margin: 0px;
+  }
 
   mat-card-header {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
   }
 
   mat-icon {
     cursor: pointer;
+  }
+
+  p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
   }
 }
