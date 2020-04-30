@@ -17,9 +17,5 @@ export class NotesComponent implements OnInit {
       height: '350px',
       width: '550px',
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
   }
 }
