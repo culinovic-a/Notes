@@ -1,5 +1,6 @@
 <h3>New Note</h3>
-<form [formGroup]="newNoteForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="apiService.newNoteForm" (ngSubmit)="onSubmit()">
+  <input type="hidden" formControlName="id" />
   <mat-form-field>
     <mat-label>Note Title:</mat-label>
     <input type="text" matInput formControlName="noteTitle" />

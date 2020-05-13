@@ -6,9 +6,22 @@
         {{ note.timestamp | date: 'M/d/yyyy h:mm' }}
       </small>
     </mat-card-subtitle>
-    <button mat-icon-button (click)="deleteNote(note)">
-      <mat-icon>delete</mat-icon>
-    </button>
+    <div>
+      <button
+        mat-icon-button
+        (click)="editNote(note.id)"
+        matTooltip="Edit Note"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        (click)="deleteNote(note)"
+        matTooltip="Delete Note"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
   </mat-card-header>
   <mat-card-content>
     <p>

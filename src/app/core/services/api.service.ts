@@ -9,15 +9,22 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { FormBuilder } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
-export class NewNoteService {
+export class ApiService {
   notesCollection: AngularFirestoreCollection<Note>;
   notes: Observable<Note[]>;
+  newNoteForm = this.fb.group({
+    id: null,
+    noteTitle: [''],
+    noteText: [''],
+    timestamp: new Date().toISOString(),
+  });
 
-  constructor(public firestore: AngularFirestore) {
+  constructor(public firestore: AngularFirestore, private fb: FormBuilder) {
     this.notesCollection = this.firestore.collection('notes', (ref) =>
       ref.orderBy('timestamp', 'desc')
     );
@@ -37,13 +44,16 @@ export class NewNoteService {
     return this.notesCollection.add(newNote);
   }
 
+  public updateNote(note: Note) {
+    this.notesCollection.doc(`/${note.id}`).update(note);
+  }
+
   public getNotes() {
     return this.notes;
   }
 
-  public getNote(id: string): Observable<Action<DocumentSnapshot<any>>> {
-    // todo
-    return this.notesCollection.doc('notes/' + id).snapshotChanges();
+  public getNote(id: string): Observable<Action<DocumentSnapshot<Note>>> {
+    return this.notesCollection.doc<Note>(`/${id}`).snapshotChanges();
   }
 
   public deleteNote(note: Note) {

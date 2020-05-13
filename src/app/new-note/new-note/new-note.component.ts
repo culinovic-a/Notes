@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder } from '@angular/forms';
-import { NewNoteService } from '../services/new-note.service';
+import { ApiService } from '../../core/services/api.service';
 
 @Component({
   selector: 'app-new-note',
@@ -9,22 +8,20 @@ import { NewNoteService } from '../services/new-note.service';
   styleUrls: ['./new-note.component.scss'],
 })
 export class NewNoteComponent implements OnInit {
-  newNoteForm = this.fb.group({
-    noteTitle: [''],
-    noteText: [''],
-    timestamp: new Date().toISOString(),
-  });
-
   constructor(
     public dialogRef: MatDialogRef<NewNoteComponent>,
-    private fb: FormBuilder,
-    private newNoteService: NewNoteService
+    private apiService: ApiService
   ) {}
 
   ngOnInit() {}
 
   onSubmit() {
-    this.newNoteService.createNote(this.newNoteForm.value);
+    if (this.apiService.newNoteForm.value.id === null) {
+      delete this.apiService.newNoteForm.value.id;
+      this.apiService.createNote(this.apiService.newNoteForm.value);
+    } else {
+      this.apiService.updateNote(this.apiService.newNoteForm.value);
+    }
     this.dialogRef.close();
   }
 
