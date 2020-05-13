@@ -10,7 +10,7 @@ import { ApiService } from '../../core/services/api.service';
 export class NewNoteComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<NewNoteComponent>,
-    private apiService: ApiService
+    public apiService: ApiService
   ) {}
 
   ngOnInit() {}
