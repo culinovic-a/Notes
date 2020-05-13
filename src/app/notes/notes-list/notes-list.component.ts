@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NewNoteService } from '../../new-note/services/new-note.service';
-import { Note } from '../../new-note/models/note';
+import { ApiService } from '../../core/services/api.service';
+import { Note } from '../../core/models/note';
 
 @Component({
   selector: 'app-notes-list',
@@ -10,14 +10,14 @@ import { Note } from '../../new-note/models/note';
 export class NotesListComponent implements OnInit {
   public note: Note[];
 
-  constructor(private newNoteService: NewNoteService) {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     this.loadNotes();
   }
 
   loadNotes() {
-    return this.newNoteService.getNotes().subscribe((data) => {
+    return this.apiService.getNotes().subscribe((data) => {
       this.note = data;
     });
   }

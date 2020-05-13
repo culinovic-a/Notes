@@ -8,6 +8,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [LayoutComponent],
@@ -19,9 +21,10 @@ import { MatListModule } from '@angular/material/list';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    AngularFirestoreModule,
   ],
-  providers: [],
-  exports: [LayoutComponent]
+  providers: [ApiService],
+  exports: [LayoutComponent],
 })
 export class CoreModule {}

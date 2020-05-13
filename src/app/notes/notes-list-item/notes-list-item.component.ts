@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Note } from '../../new-note/models/note';
-import { NewNoteService } from '../../new-note/services/new-note.service';
+import { Note } from '../../core/models/note';
+import { ApiService } from '../../core/services/api.service';
 import { DeleteDialogService } from '../services/delete-dialog.service';
 
 @Component({
@@ -10,12 +10,26 @@ import { DeleteDialogService } from '../services/delete-dialog.service';
 })
 export class NotesListItemComponent implements OnInit {
   @Input() note: Note;
+
   constructor(
-    private newNoteService: NewNoteService,
+    private apiService: ApiService,
     private deleteDialogService: DeleteDialogService
   ) {}
 
   ngOnInit() {}
+
+  editNote(id: string) {
+    this.deleteDialogService.openDialogNew();
+    this.apiService.getNote(id).subscribe((res) => {
+      this.apiService.newNoteForm.controls.id.setValue(res.payload.id);
+      this.apiService.newNoteForm.controls.noteTitle.setValue(
+        res.payload.data().noteTitle
+      );
+      this.apiService.newNoteForm.controls.noteText.setValue(
+        res.payload.data().noteText
+      );
+    });
+  }
 
   deleteNote(note: Note) {
     this.deleteDialogService
@@ -23,7 +37,7 @@ export class NotesListItemComponent implements OnInit {
       .afterClosed()
       .subscribe((res) => {
         if (res) {
-          this.newNoteService.deleteNote(note);
+          this.apiService.deleteNote(note);
         }
       });
   }
