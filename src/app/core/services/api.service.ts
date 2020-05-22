@@ -7,9 +7,9 @@ import {
   DocumentSnapshot,
   Action,
 } from '@angular/fire/firestore';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
-import { FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class ApiService {
   notesCollection: AngularFirestoreCollection<Note>;
   notes: Observable<Note[]>;
   user = this.fAuth.auth.currentUser.uid;
-  newNoteForm;
+  newNoteForm: FormGroup;
 
   constructor(
     public firestore: AngularFirestore,
