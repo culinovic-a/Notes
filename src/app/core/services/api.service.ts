@@ -9,7 +9,8 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -17,16 +18,24 @@ import { FormBuilder } from '@angular/forms';
 export class ApiService {
   notesCollection: AngularFirestoreCollection<Note>;
   notes: Observable<Note[]>;
-  newNoteForm = this.fb.group({
-    id: null,
-    noteTitle: [''],
-    noteText: [''],
-    timestamp: new Date().toISOString(),
-  });
+  user = this.fAuth.auth.currentUser.uid;
+  newNoteForm: FormGroup;
 
-  constructor(public firestore: AngularFirestore, private fb: FormBuilder) {
+  constructor(
+    public firestore: AngularFirestore,
+    private fb: FormBuilder,
+    private fAuth: AngularFireAuth
+  ) {
+    this.newNoteForm = this.fb.group({
+      userId: this.user,
+      id: null,
+      noteTitle: [''],
+      noteText: [''],
+      timestamp: new Date().toISOString(),
+    });
+
     this.notesCollection = this.firestore.collection('notes', (ref) =>
-      ref.orderBy('timestamp', 'desc')
+      ref.where('userId', '==', this.user).orderBy('timestamp', 'desc')
     );
 
     this.notes = this.notesCollection.snapshotChanges().pipe(
