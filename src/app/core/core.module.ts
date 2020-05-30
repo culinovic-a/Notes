@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ApiService } from './services/api.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [LayoutComponent],
@@ -23,6 +24,7 @@ import { ApiService } from './services/api.service';
     MatButtonModule,
     MatListModule,
     AngularFirestoreModule,
+    MatTooltipModule,
   ],
   providers: [ApiService],
   exports: [LayoutComponent],
