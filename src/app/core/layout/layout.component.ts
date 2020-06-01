@@ -12,11 +12,12 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit() {}
 
-  changeTheme(): void {
-    if (this.isLightTheme) {
-      this.isLightTheme = false;
-    } else {
-      this.isLightTheme = true;
-    }
+  changeTheme() {
+    // if (this.isLightTheme) {
+    //   this.isLightTheme = false;
+    // } else {
+    //   this.isLightTheme = true;
+    // }
+    this.isLightTheme = !this.isLightTheme;
   }
 }

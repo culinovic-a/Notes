@@ -2,7 +2,7 @@
 @include mat-core();
 .light-theme {
   $app-light-primary: mat-palette($mat-pink, 700);
-  $app-light-accent: mat-palette($mat-green, 200);
+  $app-light-accent: mat-palette($mat-yellow, 100);
 
   $app-light-theme: mat-light-theme($app-light-primary, $app-light-accent);
 

@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ApiService } from './services/api.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [LayoutComponent],
@@ -25,6 +26,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatListModule,
     AngularFirestoreModule,
     MatTooltipModule,
+    MatSlideToggleModule,
   ],
   providers: [ApiService],
   exports: [LayoutComponent],
