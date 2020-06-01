@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewNoteModule } from './new-note/new-note.module';
 import { AuthModule } from './auth/auth.module';
 import { NotesModule } from './notes/notes.module';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { NotesModule } from './notes/notes.module';
     NewNoteModule,
     AuthModule,
     NotesModule,
+    OverlayModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
