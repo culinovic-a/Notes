@@ -10,7 +10,6 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -18,14 +17,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class ApiService {
   notesCollection: AngularFirestoreCollection<Note>;
   notes: Observable<Note[]>;
-  user = this.fAuth.auth.currentUser.uid;
+  user = localStorage.getItem('userUid');
   newNoteForm: FormGroup;
 
-  constructor(
-    public firestore: AngularFirestore,
-    private fb: FormBuilder,
-    private fAuth: AngularFireAuth
-  ) {
+  constructor(public firestore: AngularFirestore, private fb: FormBuilder) {
     this.newNoteForm = this.fb.group({
       userId: this.user,
       id: null,

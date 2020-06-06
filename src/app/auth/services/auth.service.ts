@@ -10,10 +10,10 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
+  userUid: string;
 
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = firebaseAuth.authState;
-
     this.user.subscribe((user) => {
       if (user) {
         this.userDetails = user;
@@ -24,14 +24,35 @@ export class AuthService {
   }
 
   signInWithGoogle() {
-    return this.firebaseAuth.auth.signInWithPopup(
-      new firebase.auth.GoogleAuthProvider()
-    );
+    return this.firebaseAuth.auth
+      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then(() => {
+        this.storeUserUid();
+      });
   }
 
   signInWithGithub() {
-    return this.firebaseAuth.auth.signInWithPopup(
-      new firebase.auth.GithubAuthProvider()
-    );
+    return this.firebaseAuth.auth
+      .signInWithPopup(new firebase.auth.GithubAuthProvider())
+      .then(() => {
+        this.storeUserUid();
+      });
+  }
+
+  signOut() {
+    localStorage.removeItem('userUid');
+    return this.firebaseAuth.auth
+      .signOut()
+      .then(() => {
+        this.router.navigateByUrl('/auth');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  storeUserUid() {
+    this.userUid = this.firebaseAuth.auth.currentUser.uid;
+    localStorage.setItem('userUid', this.userUid);
   }
 }

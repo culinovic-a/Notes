@@ -15,8 +15,11 @@
   <div fxLayout="row">
     <mat-drawer-container>
       <mat-drawer #snav [mode]="'side'">
-        <mat-nav-list>
+        <mat-nav-list (click)="snav.close()">
           <a mat-list-item routerLink=".">Home</a>
+          <a (click)="logOut()" mat-list-item routerLink="auth">
+            Sign Out &nbsp; <mat-icon>exit_to_app</mat-icon>
+          </a>
         </mat-nav-list>
       </mat-drawer>
 
