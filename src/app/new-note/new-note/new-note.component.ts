@@ -50,10 +50,17 @@ export class NewNoteComponent implements OnInit {
     } else {
       this.apiService.updateNote(this.newNoteForm.value);
     }
+    this.resetForm();
     this.dialogRef.close();
   }
 
   onNoClick(): void {
+    this.resetForm();
     this.dialogRef.close();
+  }
+
+  resetForm() {
+    this.apiService.newNoteForm.controls.noteTitle.setValue('');
+    this.apiService.newNoteForm.controls.noteText.setValue('');
   }
 }
