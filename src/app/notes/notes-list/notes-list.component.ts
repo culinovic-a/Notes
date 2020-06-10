@@ -23,4 +23,8 @@ export class NotesListComponent implements OnInit {
       this.notes = data;
     });
   }
+
+  reverse() {
+    this.notes.reverse();
+  }
 }

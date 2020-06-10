@@ -1,3 +1,12 @@
+<div class="sort">
+  <button
+    mat-icon-button
+    (click)="reverse()"
+    matTooltip="Show Oldest Notes First"
+  >
+    <mat-icon>swap_vert</mat-icon>
+  </button>
+</div>
 <div class="notes-list" [@listAnimation]="notes?.length">
   <div *ngFor="let note of notes">
     <app-notes-list-item [note]="note"></app-notes-list-item>
