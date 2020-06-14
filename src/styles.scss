@@ -8,3 +8,8 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+router-outlet ~ * {
+  position: absolute;
+  width: 97.5%;
+  height: 90%;
+}
