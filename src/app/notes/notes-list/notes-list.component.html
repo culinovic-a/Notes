@@ -1,14 +1,19 @@
-<div class="sort">
-  <button
-    mat-icon-button
-    (click)="reverse()"
-    matTooltip="Show Oldest Notes First"
-  >
-    <mat-icon>swap_vert</mat-icon>
-  </button>
-</div>
-<div class="notes-list" [@listAnimation]="notes?.length">
-  <div *ngFor="let note of notes">
-    <app-notes-list-item [note]="note"></app-notes-list-item>
+<div *ngIf="notes?.length > 0">
+  <div class="sort">
+    <button
+      mat-icon-button
+      (click)="reverse()"
+      matTooltip="Show Oldest Notes First"
+    >
+      <mat-icon>swap_vert</mat-icon>
+    </button>
   </div>
+  <div class="notes-list" [@listAnimation]="notes?.length">
+    <div *ngFor="let note of notes">
+      <app-notes-list-item [note]="note"></app-notes-list-item>
+    </div>
+  </div>
+</div>
+<div *ngIf="notes?.length < 1">
+  No notes yet. Click on the button below and create a new note now!
 </div>
