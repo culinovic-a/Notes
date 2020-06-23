@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { OverlayContainer } from '@angular/cdk/overlay';
 import { routerAnimation } from './shared/animations/router.animation';
 
 @Component({
@@ -11,11 +10,9 @@ import { routerAnimation } from './shared/animations/router.animation';
 export class AppComponent implements OnInit {
   title = 'Notes';
 
-  constructor(private overlayContainer: OverlayContainer) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.overlayContainer.getContainerElement().classList.add('light-theme');
-  }
+  ngOnInit() {}
 
   public getRouterOutletState(outlet) {
     return outlet.isActivated ? outlet.activatedRoute : '';

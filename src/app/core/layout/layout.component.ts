@@ -7,19 +7,18 @@ import { AuthService } from '../../auth/services/auth.service';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-
   constructor(private authService: AuthService) {}
 
   isLightTheme = false;
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   changeTheme() {
+    this.isLightTheme = !this.isLightTheme;
     if (this.isLightTheme) {
-      this.isLightTheme = false;
+      document.getElementById('themeTag').classList.add('light-theme');
     } else {
-      this.isLightTheme = true;
+      document.getElementById('themeTag').classList.remove('light-theme');
     }
   }
 
