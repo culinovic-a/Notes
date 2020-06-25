@@ -4,9 +4,15 @@
   justify-content: center;
 }
 
-.notes-list {
+.list-layout {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
 }

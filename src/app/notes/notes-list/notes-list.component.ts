@@ -11,6 +11,7 @@ import { staggeredList } from '../../shared/animations/staggered-list.animation'
 })
 export class NotesListComponent implements OnInit {
   public notes: Note[];
+  notesLayout = false;
 
   constructor(private apiService: ApiService) {}
 
@@ -26,5 +27,9 @@ export class NotesListComponent implements OnInit {
 
   reverse() {
     this.notes.reverse();
+  }
+
+  changeLayout() {
+    this.notesLayout = !this.notesLayout;
   }
 }
