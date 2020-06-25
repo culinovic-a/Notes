@@ -7,8 +7,19 @@
     >
       <mat-icon>swap_vert</mat-icon>
     </button>
+    <button
+      mat-icon-button
+      (click)="changeLayout()"
+      matTooltip="Change Notes Layout"
+    >
+      <mat-icon>border_all</mat-icon>
+    </button>
   </div>
-  <div class="notes-list" [@listAnimation]="notes?.length">
+  <div
+    class="notes-list"
+    [ngClass]="notesLayout ? 'grid-layout' : 'list-layout'"
+    [@listAnimation]="notes?.length"
+  >
     <div *ngFor="let note of notes">
       <app-notes-list-item [note]="note"></app-notes-list-item>
     </div>
