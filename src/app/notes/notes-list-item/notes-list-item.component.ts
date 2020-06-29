@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Note } from '../../core/models/note';
 import { ApiService } from '../../core/services/api.service';
-import { DeleteDialogService } from '../services/delete-dialog.service';
+import { DialogService } from '../services/dialog.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NewNoteComponent } from '../../new-note/new-note/new-note.component';
 
 @Component({
   selector: 'app-notes-list-item',
@@ -13,27 +15,30 @@ export class NotesListItemComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private deleteDialogService: DeleteDialogService
+    private deleteDialogService: DialogService,
+    private matDialog: MatDialog
   ) {}
 
   ngOnInit() {}
 
   editNote(id: string) {
-    this.deleteDialogService.openDialogNew();
-    this.apiService.getNote(id).subscribe((res) => {
-      this.apiService.newNoteForm.controls.id.setValue(res.payload.id);
-      this.apiService.newNoteForm.controls.noteTitle.setValue(
-        res.payload.data().noteTitle
-      );
-      this.apiService.newNoteForm.controls.noteText.setValue(
-        res.payload.data().noteText
-      );
+    const dialogRef = this.matDialog.open(NewNoteComponent, {
+      data: {
+        id: this.note.id,
+        noteTitle: this.note.noteTitle,
+        noteText: this.note.noteText,
+        isEdit: true,
+      },
+      disableClose: true,
+      autoFocus: true,
+      height: '350px',
+      width: '550px',
     });
   }
 
   deleteNote(note: Note) {
     this.deleteDialogService
-      .openDialog()
+      .openDialogDelete()
       .afterClosed()
       .subscribe((res) => {
         if (res) {

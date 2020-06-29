@@ -6,10 +6,10 @@ import { NewNoteComponent } from 'src/app/new-note/new-note/new-note.component';
 @Injectable({
   providedIn: 'root',
 })
-export class DeleteDialogService {
+export class DialogService {
   constructor(public dialog: MatDialog) {}
 
-  openDialog() {
+  openDialogDelete() {
     return this.dialog.open(DeleteModalComponent, {
       width: '450px',
     });

@@ -5,12 +5,12 @@ import { NewNoteComponent } from './new-note/new-note.component';
 const routes: Routes = [
   {
     path: '',
-    component: NewNoteComponent
-  }
+    component: NewNoteComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class NewNoteRoutingModule {}
