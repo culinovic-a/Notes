@@ -12,6 +12,9 @@ import { staggeredList } from '../../shared/animations/staggered-list.animation'
 export class NotesListComponent implements OnInit {
   public notes: Note[];
   notesLayout = false;
+  gridIcon = 'border_all';
+  listIcon = 'list';
+  state: boolean;
 
   constructor(private apiService: ApiService) {}
 
@@ -31,5 +34,10 @@ export class NotesListComponent implements OnInit {
 
   changeLayout() {
     this.notesLayout = !this.notesLayout;
+  }
+
+  iconValue(state: boolean) {
+    this.state = state;
+    console.log(this.state);
   }
 }

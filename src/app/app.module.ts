@@ -9,6 +9,7 @@ import { NewNoteModule } from './new-note/new-note.module';
 import { AuthModule } from './auth/auth.module';
 import { NotesModule } from './notes/notes.module';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { IconToggleModule } from './shared/components/icon-toggle/icon-toggle.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     AuthModule,
     NotesModule,
     OverlayModule,
+    IconToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
