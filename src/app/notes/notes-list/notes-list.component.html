@@ -7,13 +7,12 @@
     >
       <mat-icon>swap_vert</mat-icon>
     </button>
-    <button
-      mat-icon-button
+    <app-icon-toggle
       (click)="changeLayout()"
-      matTooltip="Change Notes Layout"
-    >
-      <mat-icon>border_all</mat-icon>
-    </button>
+      (stateChanged)="onIconToggleStateChange($event)"
+      [onStateIcon]="gridIcon"
+      [offStateIcon]="listIcon"
+    ></app-icon-toggle>
   </div>
   <div
     class="notes-list"
