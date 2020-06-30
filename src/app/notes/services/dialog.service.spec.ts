@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DeleteDialogService } from './delete-dialog.service';
+import { DeleteDialogService } from './dialog.service';
 
 describe('DeleteDialogService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

@@ -9,7 +9,6 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -18,17 +17,8 @@ export class ApiService {
   notesCollection: AngularFirestoreCollection<Note>;
   notes: Observable<Note[]>;
   user = localStorage.getItem('userUid');
-  newNoteForm: FormGroup;
 
-  constructor(public firestore: AngularFirestore, private fb: FormBuilder) {
-    this.newNoteForm = this.fb.group({
-      userId: this.user,
-      id: null,
-      noteTitle: [''],
-      noteText: [''],
-      timestamp: new Date().toISOString(),
-    });
-
+  constructor(public firestore: AngularFirestore) {
     this.notesCollection = this.firestore.collection('notes', (ref) =>
       ref.where('userId', '==', this.user).orderBy('timestamp', 'desc')
     );
