@@ -18,7 +18,7 @@ export class IconToggleComponent implements OnInit {
   @Input() onStateIcon: string;
   @Input() offStateIcon: string;
   @Output() stateChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-  public currentState = true;
+  private currentState = true;
 
   constructor() {}
 

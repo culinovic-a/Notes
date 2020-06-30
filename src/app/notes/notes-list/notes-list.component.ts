@@ -36,8 +36,7 @@ export class NotesListComponent implements OnInit {
     this.notesLayout = !this.notesLayout;
   }
 
-  iconValue(state: boolean) {
-    this.state = state;
-    console.log(this.state);
+  onIconToggleStateChange(nextState: boolean) {
+    this.state = nextState;
   }
 }

@@ -9,9 +9,9 @@
     </button>
     <app-icon-toggle
       (click)="changeLayout()"
-      (stateChanged)="iconValue($event)"
-      onStateIcon="{{ gridIcon }}"
-      offStateIcon="{{ listIcon }}"
+      (stateChanged)="onIconToggleStateChange($event)"
+      [onStateIcon]="gridIcon"
+      [offStateIcon]="listIcon"
     ></app-icon-toggle>
   </div>
   <div
