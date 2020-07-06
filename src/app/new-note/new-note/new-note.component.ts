@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, HostListener } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from '../../core/services/api.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -16,6 +16,15 @@ export class NewNoteComponent implements OnInit {
   noteTitle: string;
   noteText: string;
   isEdit: boolean;
+
+  @HostListener('window:keydown', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.key === 'Enter' && 'Control') {
+      this.onSubmit();
+    } else if (event.key === 'Escape') {
+      this.onNoClick();
+    }
+  }
 
   constructor(
     public dialogRef: MatDialogRef<NewNoteComponent>,
