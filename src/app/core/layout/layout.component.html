@@ -1,15 +1,17 @@
 <div>
   <mat-toolbar color="primary">
-    <div class="nav">
-      <button mat-icon-button (click)="snav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <h1>Notes</h1>
+    <div class="nvbar" *ngIf="userIsLoggedIn">
+      <div class="nav">
+        <button mat-icon-button (click)="snav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <h1>Notes</h1>
+      </div>
+      <mat-slide-toggle
+        (click)="changeTheme()"
+        matTooltip="Change Theme"
+      ></mat-slide-toggle>
     </div>
-    <mat-slide-toggle
-      (click)="changeTheme()"
-      matTooltip="Change Theme"
-    ></mat-slide-toggle>
   </mat-toolbar>
 
   <div fxLayout="row">

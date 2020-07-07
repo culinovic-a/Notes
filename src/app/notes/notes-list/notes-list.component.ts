@@ -15,6 +15,7 @@ export class NotesListComponent implements OnInit {
   gridIcon = 'border_all';
   listIcon = 'list';
   state: boolean;
+  loading: boolean;
 
   constructor(private apiService: ApiService) {}
 
@@ -23,8 +24,10 @@ export class NotesListComponent implements OnInit {
   }
 
   loadNotes() {
+    this.loading = true;
     return this.apiService.getNotes().subscribe((data) => {
       this.notes = data;
+      this.loading = false;
     });
   }
 

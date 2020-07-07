@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
-import { AuthService } from './services/auth.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -22,9 +21,9 @@ import { MatButtonModule } from '@angular/material/button';
     AngularFirestoreModule,
     AngularFireAuthModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
   ],
-  providers: [AuthService],
-  exports: [LoginComponent]
+  providers: [],
+  exports: [LoginComponent],
 })
 export class AuthModule {}
