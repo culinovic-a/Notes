@@ -27,11 +27,12 @@ export class NotesListItemComponent implements OnInit {
         id: this.note.id,
         noteTitle: this.note.noteTitle,
         noteText: this.note.noteText,
+        labels: this.note.labels,
         isEdit: true,
       },
       disableClose: true,
       autoFocus: true,
-      height: '350px',
+      height: '400px',
       width: '550px',
     });
   }
@@ -45,5 +46,9 @@ export class NotesListItemComponent implements OnInit {
           this.apiService.deleteNote(note);
         }
       });
+  }
+
+  hack(val) {
+    return Array.from(val);
   }
 }

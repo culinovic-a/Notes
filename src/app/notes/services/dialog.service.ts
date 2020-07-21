@@ -14,10 +14,4 @@ export class DialogService {
       width: '450px',
     });
   }
-
-  openDialogNew() {
-    return this.dialog.open(NewNoteComponent, {
-      width: '450px',
-    });
-  }
 }

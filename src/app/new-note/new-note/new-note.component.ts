@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from '../../core/services/api.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-new-note',
@@ -16,6 +16,10 @@ export class NewNoteComponent implements OnInit {
   noteTitle: string;
   noteText: string;
   isEdit: boolean;
+  labels: any;
+  labelText: string;
+  labelColor: string;
+  labelArr: FormArray;
 
   constructor(
     public dialogRef: MatDialogRef<NewNoteComponent>,
@@ -26,11 +30,17 @@ export class NewNoteComponent implements OnInit {
     this.id = data ? data.id : '';
     this.noteTitle = data ? data.noteTitle : '';
     this.noteText = data ? data.noteText : '';
+    this.labels = data ? data.labels : '';
+    this.labelText = data ? data.labels.labelText : '';
+    this.labelColor = data ? data.labels.labelColor : '';
     this.isEdit = data ? data.isEdit : false;
+
+    console.log(this.labelText);
   }
 
   ngOnInit() {
     this.buildForm();
+    this.labelArr = this.newNoteForm.controls.labels as FormArray;
   }
 
   buildForm(): void {
@@ -38,9 +48,26 @@ export class NewNoteComponent implements OnInit {
       userId: this.user,
       id: !this.isEdit ? null : this.id,
       noteTitle: !this.isEdit ? '' : this.noteTitle,
-      noteText: !this.noteText ? '' : this.noteText,
+      noteText: !this.isEdit ? '' : this.noteText,
+      // labels: !this.isEdit ? this.fb.array([this.label]) : this.labels,
+      labels: this.fb.array([this.label]),
       timestamp: new Date().toISOString(),
     });
+  }
+
+  get label(): FormGroup {
+    return this.fb.group({
+      labelText: !this.isEdit ? '' : this.labelText,
+      labelColor: !this.isEdit ? '' : this.labelColor,
+    });
+  }
+
+  addLabel() {
+    this.labelArr.push(this.label);
+  }
+
+  deleteLabel(index) {
+    this.labelArr.removeAt(index);
   }
 
   onSubmit() {

@@ -12,6 +12,7 @@ import { NotesListItemComponent } from './notes-list-item/notes-list-item.compon
 import { MatCardModule } from '@angular/material/card';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { IconToggleModule } from '../shared/components/icon-toggle/icon-toggle.module';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { IconToggleModule } from '../shared/components/icon-toggle/icon-toggle.m
     MatTooltipModule,
     MatCardModule,
     IconToggleModule,
+    MatChipsModule,
   ],
   entryComponents: [DeleteModalComponent],
 })

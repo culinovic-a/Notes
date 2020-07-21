@@ -13,6 +13,50 @@
     <textarea matInput formControlName="noteText"></textarea>
   </mat-form-field>
 
+  <div formArrayName="labels">
+    <div
+      *ngFor="
+        let labels of newNoteForm.get('labels').controls;
+        let labelIndex = index
+      "
+    >
+      <div class="labels" [formGroupName]="labelIndex">
+        <mat-form-field>
+          <mat-label>Label Text and Color:</mat-label>
+          <input type="text" matInput formControlName="labelText" />
+        </mat-form-field>
+        <div>
+          <mat-radio-group
+            aria-label="Select an option"
+            formControlName="labelColor"
+          >
+            <mat-radio-button color="warn" value="red" name="labelColor"
+              >Red</mat-radio-button
+            >
+            &nbsp;
+            <mat-radio-button color="accent" value="yelloe" name="labelColor"
+              >Yellow</mat-radio-button
+            >
+            &nbsp;
+            <mat-radio-button color="primary" value="pink" name="labelColor"
+              >Pink</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+        <button
+          color="primary"
+          mat-icon-button
+          matTooltip="Remove Label"
+          (click)="deleteLabel(labelIndex)"
+        >
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button class="add" mat-button type="button" (click)="addLabel()">
+    Add Label
+  </button>
   <div class="buttons" mat-dialog-actions>
     <button mat-button type="button" (click)="onNoClick()">Cancel</button>
     <button mat-raised-button color="primary" type="submit" cdkFocusInitial>

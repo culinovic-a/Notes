@@ -5,6 +5,17 @@ h3 {
 form {
   display: flex;
   flex-direction: column;
+
+  .labels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .add {
+    margin-bottom: 5px;
+  }
 }
 
 .buttons {

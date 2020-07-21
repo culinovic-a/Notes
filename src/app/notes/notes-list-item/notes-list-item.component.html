@@ -24,6 +24,13 @@
     </div>
   </mat-card-header>
   <mat-card-content>
+    <div>
+      <mat-chip-list class="chips" *ngFor="let label of hack(note.labels)">
+        <mat-chip [ngStyle]="{ 'background-color': [label.labelColor] }">
+          {{ label.labelText }}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
     <p>
       {{ note.noteText }}
     </p>

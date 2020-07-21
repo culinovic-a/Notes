@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../core/services/api.service';
 import { Note } from '../../core/models/note';
 import { staggeredList } from '../../shared/animations/staggered-list.animation';
+import { DATABASE_URL } from '@angular/fire';
 
 @Component({
   selector: 'app-notes-list',
