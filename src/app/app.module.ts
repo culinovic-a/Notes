@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { NotesModule } from './notes/notes.module';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { IconToggleModule } from './shared/components/icon-toggle/icon-toggle.module';
+import { AuthService } from './auth/services/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,7 @@ import { IconToggleModule } from './shared/components/icon-toggle/icon-toggle.mo
     OverlayModule,
     IconToggleModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

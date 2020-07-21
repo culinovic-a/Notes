@@ -7,13 +7,16 @@ import { AuthService } from '../../auth/services/auth.service';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
+  isLightTheme = false;
+  userIsLoggedIn = localStorage.getItem('userUid') != null ? true : false;
+
   constructor(private authService: AuthService) {}
 
-  isLightTheme = false;
+  ngOnInit() {
+    this.checkIfUserIsLoggedIn();
+  }
 
-  ngOnInit() {}
-
-  changeTheme() {
+  changeTheme(): void {
     this.isLightTheme = !this.isLightTheme;
     if (this.isLightTheme) {
       document.getElementById('themeTag').classList.add('light-theme');
@@ -22,7 +25,14 @@ export class LayoutComponent implements OnInit {
     }
   }
 
-  logOut() {
+  logOut(): void {
     this.authService.signOut();
+    this.authService.userIsLoggedIn.next(false);
+  }
+
+  checkIfUserIsLoggedIn(): void {
+    this.authService.userIsLoggedIn.subscribe((logged) => {
+      this.userIsLoggedIn = logged;
+    });
   }
 }

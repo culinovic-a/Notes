@@ -1,29 +1,33 @@
-<div *ngIf="notes?.length > 0">
-  <div class="sort">
-    <button
-      mat-icon-button
-      (click)="reverse()"
-      matTooltip="Show Oldest Notes First"
+<div *ngIf="!loading">
+  <div *ngIf="notes?.length > 0">
+    <div class="sort">
+      <button
+        mat-icon-button
+        (click)="reverse()"
+        matTooltip="Show Oldest Notes First"
+      >
+        <mat-icon>swap_vert</mat-icon>
+      </button>
+      <app-icon-toggle
+        (click)="changeLayout()"
+        (stateChanged)="onIconToggleStateChange($event)"
+        [onStateIcon]="gridIcon"
+        [offStateIcon]="listIcon"
+      ></app-icon-toggle>
+    </div>
+    <div
+      class="notes-list"
+      [ngClass]="notesLayout ? 'grid-layout' : 'list-layout'"
+      [@listAnimation]="notes?.length"
     >
-      <mat-icon>swap_vert</mat-icon>
-    </button>
-    <app-icon-toggle
-      (click)="changeLayout()"
-      (stateChanged)="onIconToggleStateChange($event)"
-      [onStateIcon]="gridIcon"
-      [offStateIcon]="listIcon"
-    ></app-icon-toggle>
-  </div>
-  <div
-    class="notes-list"
-    [ngClass]="notesLayout ? 'grid-layout' : 'list-layout'"
-    [@listAnimation]="notes?.length"
-  >
-    <div *ngFor="let note of notes">
-      <app-notes-list-item [note]="note"></app-notes-list-item>
+      <div *ngFor="let note of notes">
+        <app-notes-list-item [note]="note"></app-notes-list-item>
+      </div>
     </div>
   </div>
-</div>
-<div *ngIf="notes?.length < 1">
-  No notes yet. Click on the button below and create a new note now!
+  <div *ngIf="notes?.length < 1">
+    No notes yet. Click on the button below and create a new note now!
+  </div>
+  
+  
 </div>

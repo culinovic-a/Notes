@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +11,7 @@ export class AuthService {
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
   userUid: string;
+  userIsLoggedIn = new Subject<boolean>();
 
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = firebaseAuth.authState;
@@ -54,5 +55,6 @@ export class AuthService {
   storeUserUid() {
     this.userUid = this.firebaseAuth.auth.currentUser.uid;
     localStorage.setItem('userUid', this.userUid);
+    this.userIsLoggedIn.next(true);
   }
 }
