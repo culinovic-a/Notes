@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NewNoteComponent } from 'src/app/new-note/new-note/new-note.component';
 
@@ -8,6 +8,13 @@ import { NewNoteComponent } from 'src/app/new-note/new-note/new-note.component';
   styleUrls: ['./notes.component.scss'],
 })
 export class NotesComponent implements OnInit {
+  @HostListener('window:keydown', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.key === 'Shift' && 'Alt') {
+      this.openDialog();
+    }
+  }
+
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {}
