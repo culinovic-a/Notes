@@ -32,7 +32,7 @@ export class NotesListItemComponent implements OnInit {
       },
       disableClose: true,
       autoFocus: true,
-      height: '400px',
+      height: '430px',
       width: '550px',
     });
   }

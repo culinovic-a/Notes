@@ -34,13 +34,12 @@ export class NewNoteComponent implements OnInit {
     this.labelText = data ? data.labels.labelText : '';
     this.labelColor = data ? data.labels.labelColor : '';
     this.isEdit = data ? data.isEdit : false;
-
-    console.log(this.labelText);
   }
 
   ngOnInit() {
     this.buildForm();
     this.labelArr = this.newNoteForm.controls.labels as FormArray;
+    console.log(this.labels);
   }
 
   buildForm(): void {
@@ -49,7 +48,6 @@ export class NewNoteComponent implements OnInit {
       id: !this.isEdit ? null : this.id,
       noteTitle: !this.isEdit ? '' : this.noteTitle,
       noteText: !this.isEdit ? '' : this.noteText,
-      // labels: !this.isEdit ? this.fb.array([this.label]) : this.labels,
       labels: this.fb.array([this.label]),
       timestamp: new Date().toISOString(),
     });

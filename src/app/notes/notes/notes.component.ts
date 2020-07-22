@@ -14,7 +14,7 @@ export class NotesComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NewNoteComponent, {
-      height: '400px',
+      height: '430px',
       width: '550px',
       disableClose: true,
       autoFocus: true,
