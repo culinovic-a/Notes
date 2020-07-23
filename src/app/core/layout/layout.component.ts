@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/services/auth.service';
+import { SnackService } from '../services/snack.service';
 
 @Component({
   selector: 'app-layout',
@@ -10,7 +11,10 @@ export class LayoutComponent implements OnInit {
   isLightTheme = false;
   userIsLoggedIn = localStorage.getItem('userUid') != null ? true : false;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private snackService: SnackService
+  ) {}
 
   ngOnInit() {
     this.checkIfUserIsLoggedIn();
@@ -28,6 +32,7 @@ export class LayoutComponent implements OnInit {
   logOut(): void {
     this.authService.signOut();
     this.authService.userIsLoggedIn.next(false);
+    this.snackService.openSnackBar('Goodbye! :)');
   }
 
   checkIfUserIsLoggedIn(): void {

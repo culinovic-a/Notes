@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, HostListener } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from '../../core/services/api.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { SnackService } from '../../core/services/snack.service';
 
 @Component({
   selector: 'app-new-note',
@@ -30,6 +31,7 @@ export class NewNoteComponent implements OnInit {
     public dialogRef: MatDialogRef<NewNoteComponent>,
     public apiService: ApiService,
     private fb: FormBuilder,
+    private snackService: SnackService,
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.id = data ? data.id : '';
@@ -56,8 +58,10 @@ export class NewNoteComponent implements OnInit {
     if (this.newNoteForm.value.id === null) {
       delete this.newNoteForm.value.id;
       this.apiService.createNote(this.newNoteForm.value);
+      this.snackService.openSnackBar('New Note Created!');
     } else {
       this.apiService.updateNote(this.newNoteForm.value);
+      this.snackService.openSnackBar('Note Updated!');
     }
     this.dialogRef.close();
   }

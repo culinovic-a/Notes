@@ -12,6 +12,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ApiService } from './services/api.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackService } from './services/snack.service';
 
 @NgModule({
   declarations: [LayoutComponent],
@@ -27,8 +29,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     AngularFirestoreModule,
     MatTooltipModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
   ],
-  providers: [ApiService],
+  providers: [ApiService, SnackService],
   exports: [LayoutComponent],
 })
 export class CoreModule {}
