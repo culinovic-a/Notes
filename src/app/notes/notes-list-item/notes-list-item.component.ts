@@ -4,6 +4,7 @@ import { ApiService } from '../../core/services/api.service';
 import { DialogService } from '../services/dialog.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewNoteComponent } from '../../new-note/new-note/new-note.component';
+import { SnackService } from '../../core/services/snack.service';
 
 @Component({
   selector: 'app-notes-list-item',
@@ -16,7 +17,8 @@ export class NotesListItemComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private deleteDialogService: DialogService,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private snackService: SnackService
   ) {}
 
   ngOnInit() {}
@@ -43,6 +45,7 @@ export class NotesListItemComponent implements OnInit {
       .subscribe((res) => {
         if (res) {
           this.apiService.deleteNote(note);
+          this.snackService.openSnackBar('Note Deleted!');
         }
       });
   }
