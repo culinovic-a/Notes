@@ -1,15 +1,15 @@
 <div *ngIf="!loading">
     <div *ngIf="notes?.length > 0">
         <div class="sort">
-            <form class="example-form">
-                <mat-form-field class="example-full-width">
+            <form>
+                <mat-form-field>
                     <mat-label>Search Notes by Title</mat-label>
                     <input matInput name="search" [(ngModel)]="searchText" autocomplete="off" />
                 </mat-form-field>
             </form>
-            <button mat-icon-button (click)="reverse()" matTooltip="Show Oldest Notes First">
-        <mat-icon>swap_vert</mat-icon>
-      </button>
+            <button mat-icon-button (click)="reverse()" [matTooltip]="tooltip ? 'Show latest notes first' : 'Show oldest notes first'">
+                <mat-icon>swap_vert</mat-icon>
+            </button>
             <app-icon-toggle (click)="changeLayout()" (stateChanged)="onIconToggleStateChange($event)" [onStateIcon]="gridIcon" [offStateIcon]="listIcon"></app-icon-toggle>
         </div>
         <div class="notes-list" [ngClass]="notesLayout ? 'grid-layout' : 'list-layout'" [@listAnimation]="notes?.length">

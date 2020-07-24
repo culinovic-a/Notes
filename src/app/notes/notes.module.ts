@@ -12,7 +12,7 @@ import { NotesListItemComponent } from './notes-list-item/notes-list-item.compon
 import { MatCardModule } from '@angular/material/card';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { IconToggleModule } from '../shared/components/icon-toggle/icon-toggle.module';
-import { SearchPipe } from '../shared/pipes/search.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 
