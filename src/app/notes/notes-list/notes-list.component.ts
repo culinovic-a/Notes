@@ -16,6 +16,8 @@ export class NotesListComponent implements OnInit {
   listIcon = 'list';
   state: boolean;
   loading: boolean;
+  searchText: '';
+  tooltip = false;
 
   constructor(private apiService: ApiService) {}
 
@@ -33,6 +35,7 @@ export class NotesListComponent implements OnInit {
 
   reverse() {
     this.notes.reverse();
+    this.tooltip = !this.tooltip;
   }
 
   changeLayout() {
