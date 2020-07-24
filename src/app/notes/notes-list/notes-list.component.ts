@@ -16,6 +16,7 @@ export class NotesListComponent implements OnInit {
   listIcon = 'list';
   state: boolean;
   loading: boolean;
+  searchText: '';
 
   constructor(private apiService: ApiService) {}
 
