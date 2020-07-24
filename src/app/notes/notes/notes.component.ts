@@ -10,7 +10,7 @@ import { NewNoteComponent } from 'src/app/new-note/new-note/new-note.component';
 export class NotesComponent implements OnInit {
   @HostListener('window:keydown', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (event.key === 'Shift' && 'Alt') {
+    if (event.shiftKey && event.key === 'Alt') {
       this.openDialog();
     }
   }
