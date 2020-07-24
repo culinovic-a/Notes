@@ -20,7 +20,7 @@ export class NewNoteComponent implements OnInit {
 
   @HostListener('window:keydown', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (event.key === 'Enter' && 'Control') {
+    if (event.ctrlKey && event.key === 'Enter') {
       this.onSubmit();
     } else if (event.key === 'Escape') {
       this.onNoClick();
