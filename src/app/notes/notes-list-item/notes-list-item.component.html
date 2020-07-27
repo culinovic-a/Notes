@@ -1,31 +1,23 @@
 <mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>{{ note.noteTitle }}</mat-card-title>
-    <mat-card-subtitle>
-      <small>
-        {{ note.timestamp | date: 'M/d/yyyy h:mm' }}
+    <mat-card-header>
+        <mat-card-title>{{ note.noteTitle }}</mat-card-title>
+        <mat-card-subtitle>
+            <small>
+        {{ note.newTimestamp | date: 'M/d/yyyy h:mm' }}
       </small>
-    </mat-card-subtitle>
-    <div>
-      <button
-        mat-icon-button
-        (click)="editNote(note.id)"
-        matTooltip="Edit Note"
-      >
+        </mat-card-subtitle>
+        <div>
+            <button mat-icon-button (click)="editNote(note.id)" matTooltip="Edit Note">
         <mat-icon>edit</mat-icon>
       </button>
-      <button
-        mat-icon-button
-        (click)="deleteNote(note)"
-        matTooltip="Delete Note"
-      >
+            <button mat-icon-button (click)="deleteNote(note)" matTooltip="Delete Note">
         <mat-icon>delete</mat-icon>
       </button>
-    </div>
-  </mat-card-header>
-  <mat-card-content>
-    <p>
-      {{ note.noteText }}
-    </p>
-  </mat-card-content>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            {{ note.noteText }}
+        </p>
+    </mat-card-content>
 </mat-card>

@@ -15,6 +15,8 @@ import { IconToggleModule } from '../shared/components/icon-toggle/icon-toggle.m
 import { SearchPipe } from './pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { GroupPipe } from './pipes/group.pipe';
+import { ReversePipe } from './pipes/reverse.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { MatInputModule } from '@angular/material/input';
     NotesListItemComponent,
     DeleteModalComponent,
     SearchPipe,
+    GroupPipe,
+    ReversePipe,
   ],
   imports: [
     CommonModule,

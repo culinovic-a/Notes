@@ -18,6 +18,7 @@ export class NotesListComponent implements OnInit {
   loading: boolean;
   searchText: '';
   tooltip = false;
+  isReversed = false;
 
   constructor(private apiService: ApiService) {}
 
@@ -34,7 +35,7 @@ export class NotesListComponent implements OnInit {
   }
 
   reverse() {
-    this.notes.reverse();
+    this.isReversed = !this.isReversed;
     this.tooltip = !this.tooltip;
   }
 
