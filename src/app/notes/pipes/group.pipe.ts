@@ -12,8 +12,8 @@ export class GroupPipe implements PipeTransform {
 
     const mappedCollection = collection.map((note) => ({
       ...note,
-      timestamp: note.timestamp.split('T')[0],
-      newTimestamp: note.timestamp,
+      newTimestamp: note.timestamp.split('T')[0],
+      timestamp: note.timestamp,
     }));
 
     const groupedCollection = mappedCollection.reduce((previous, current) => {

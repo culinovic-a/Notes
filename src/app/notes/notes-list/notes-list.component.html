@@ -17,7 +17,7 @@
         <div class="notes-list" [ngClass]="notesLayout ? 'grid-layout' : 'list-layout'">
             <div *ngFor="
           let group of (isReversed ? (notes | reverse) : notes)
-            | group: 'timestamp'
+            | group: 'newTimestamp'
         ">
                 <small>{{ group.key | date: 'M/d' }}</small>
                 <div [@listAnimation]="notes?.length">
