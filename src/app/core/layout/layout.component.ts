@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/services/auth.service';
 import { SnackService } from '../services/snack.service';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-layout',
@@ -15,7 +16,8 @@ export class LayoutComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private snackService: SnackService
+    private snackService: SnackService,
+    private storageService: StorageService
   ) {}
 
   ngOnInit() {
@@ -35,16 +37,13 @@ export class LayoutComponent implements OnInit {
   changeTheme(): void {
     this.isLightTheme = !this.isLightTheme;
 
-    localStorage.setItem(
-      'toggleButtonState',
-      JSON.stringify(this.isLightTheme)
-    );
+    this.storageService.setToggleButtonState(this.isLightTheme);
 
     if (this.isLightTheme) {
-      localStorage.setItem('theme', 'light-theme');
+      this.storageService.setTheme();
       document.getElementById('themeTag').classList.add('light-theme');
     } else {
-      localStorage.removeItem('theme');
+      this.storageService.removeTheme();
       document.getElementById('themeTag').classList.remove('light-theme');
     }
   }
