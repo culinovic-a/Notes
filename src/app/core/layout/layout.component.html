@@ -1,33 +1,30 @@
 <div>
-  <mat-toolbar color="primary">
-    <div class="nvbar" *ngIf="userIsLoggedIn">
-      <div class="nav">
-        <button mat-icon-button (click)="snav.toggle()">
+    <mat-toolbar color="primary">
+        <div class="nvbar" *ngIf="userIsLoggedIn">
+            <div class="nav">
+                <button mat-icon-button (click)="snav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-        <h1>Notes</h1>
-      </div>
-      <mat-slide-toggle
-        (click)="changeTheme()"
-        matTooltip="Change Theme"
-      ></mat-slide-toggle>
-    </div>
-  </mat-toolbar>
+                <h1>Notes</h1>
+            </div>
+            <mat-slide-toggle (click)="changeTheme()" matTooltip="Change Theme" [checked]="toggleButton"></mat-slide-toggle>
+        </div>
+    </mat-toolbar>
 
-  <div fxLayout="row">
-    <mat-drawer-container>
-      <mat-drawer #snav [mode]="'side'">
-        <mat-nav-list (click)="snav.close()">
-          <a mat-list-item routerLink=".">Home</a>
-          <a (click)="logOut()" mat-list-item routerLink="auth">
+    <div fxLayout="row">
+        <mat-drawer-container>
+            <mat-drawer #snav [mode]="'side'">
+                <mat-nav-list (click)="snav.close()">
+                    <a mat-list-item routerLink=".">Home</a>
+                    <a (click)="logOut()" mat-list-item routerLink="auth">
             Sign Out &nbsp; <mat-icon>exit_to_app</mat-icon>
           </a>
-        </mat-nav-list>
-      </mat-drawer>
+                </mat-nav-list>
+            </mat-drawer>
 
-      <mat-drawer-content>
-        <ng-content></ng-content>
-      </mat-drawer-content>
-    </mat-drawer-container>
-  </div>
+            <mat-drawer-content>
+                <ng-content></ng-content>
+            </mat-drawer-content>
+        </mat-drawer-container>
+    </div>
 </div>
