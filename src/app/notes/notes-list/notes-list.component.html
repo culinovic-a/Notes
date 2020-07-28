@@ -7,14 +7,24 @@
                     <input matInput name="search" [(ngModel)]="searchText" autocomplete="off" />
                 </mat-form-field>
             </form>
-            <button mat-icon-button (click)="reverse()" [matTooltip]="tooltip ? 'Show latest notes first' : 'Show oldest notes first'">
-                <mat-icon>swap_vert</mat-icon>
-            </button>
+            <button mat-icon-button (click)="reverse()" [matTooltip]="
+          tooltip ? 'Show latest notes first' : 'Show oldest notes first'
+        ">
+        <mat-icon>swap_vert</mat-icon>
+      </button>
             <app-icon-toggle (click)="changeLayout()" (stateChanged)="onIconToggleStateChange($event)" [onStateIcon]="gridIcon" [offStateIcon]="listIcon"></app-icon-toggle>
         </div>
-        <div class="notes-list" [ngClass]="notesLayout ? 'grid-layout' : 'list-layout'" [@listAnimation]="notes?.length">
-            <div *ngFor="let note of notes | search: searchText">
-                <app-notes-list-item [note]="note"></app-notes-list-item>
+        <div class="notes-list" [ngClass]="notesLayout ? 'grid-layout' : 'list-layout'">
+            <div *ngFor="
+          let group of (isReversed ? (notes | reverse) : notes)
+            | group: 'newTimestamp'
+        ">
+                <small>{{ group.key | date: 'M/d' }}</small>
+                <div [@listAnimation]="notes?.length">
+                    <div *ngFor="let note of group.value | search: searchText">
+                        <app-notes-list-item [note]="note"></app-notes-list-item>
+                    </div>
+                </div>
             </div>
             <div *ngIf="(notes | search: searchText)?.length === 0">
                 <p>No Results Found!</p>
