@@ -9,8 +9,7 @@
     </mat-form-field>
 
     <mat-label>Note Text:</mat-label>
-    <quill-editor [styles]="editorStyle" [modules]="config" formControlName="noteText">
-    </quill-editor>
+    <quill-editor [modules]="config" formControlName="noteText"> </quill-editor>
 
     <div class="buttons" mat-dialog-actions>
         <button mat-button type="button" (click)="onNoClick()">Cancel</button>
