@@ -10,23 +10,6 @@ import { SnackService } from '../../core/services/snack.service';
   styleUrls: ['./new-note.component.scss'],
 })
 export class NewNoteComponent implements OnInit {
-  newNoteForm: FormGroup;
-  user = localStorage.getItem('userUid');
-
-  id: string;
-  noteTitle: string;
-  noteText: string;
-  isEdit: boolean;
-
-  @HostListener('window:keydown', ['$event'])
-  keyEvent(event: KeyboardEvent) {
-    if (event.ctrlKey && event.key === 'Enter') {
-      this.onSubmit();
-    } else if (event.key === 'Escape') {
-      this.onNoClick();
-    }
-  }
-
   constructor(
     public dialogRef: MatDialogRef<NewNoteComponent>,
     public apiService: ApiService,
@@ -38,6 +21,32 @@ export class NewNoteComponent implements OnInit {
     this.noteTitle = data ? data.noteTitle : '';
     this.noteText = data ? data.noteText : '';
     this.isEdit = data ? data.isEdit : false;
+  }
+  newNoteForm: FormGroup;
+  user = localStorage.getItem('userUid');
+
+  id: string;
+  noteTitle: string;
+  noteText: string;
+  isEdit: boolean;
+
+  config = {
+    toolbar: [
+      ['bold', 'italic', 'underline'],
+      ['blockquote', 'code-block'],
+
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ indent: '-1' }, { indent: '+1' }],
+    ],
+  };
+
+  @HostListener('window:keydown', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.ctrlKey && event.key === 'Enter') {
+      this.onSubmit();
+    } else if (event.key === 'Escape') {
+      this.onNoClick();
+    }
   }
 
   ngOnInit() {

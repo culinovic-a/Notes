@@ -16,8 +16,6 @@
         </div>
     </mat-card-header>
     <mat-card-content>
-        <p>
-            {{ note.noteText }}
-        </p>
+        <p [innerHTML]="note.noteText"></p>
     </mat-card-content>
 </mat-card>
