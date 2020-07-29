@@ -2,21 +2,19 @@
 <h3 *ngIf="isEdit">Edit Note</h3>
 
 <form [formGroup]="newNoteForm" (ngSubmit)="onSubmit()">
-  <input type="hidden" formControlName="id" />
-  <mat-form-field>
-    <mat-label>Note Title:</mat-label>
-    <input type="text" matInput formControlName="noteTitle" />
-  </mat-form-field>
+    <input type="hidden" formControlName="id" />
+    <mat-form-field>
+        <mat-label>Note Title:</mat-label>
+        <input type="text" matInput formControlName="noteTitle" />
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
     <mat-label>Note Text:</mat-label>
-    <textarea matInput formControlName="noteText"></textarea>
-  </mat-form-field>
+    <quill-editor [modules]="config" formControlName="noteText"> </quill-editor>
 
-  <div class="buttons" mat-dialog-actions>
-    <button mat-button type="button" (click)="onNoClick()">Cancel</button>
-    <button mat-raised-button color="primary" type="submit" cdkFocusInitial>
+    <div class="buttons" mat-dialog-actions>
+        <button mat-button type="button" (click)="onNoClick()">Cancel</button>
+        <button mat-raised-button color="primary" type="submit" cdkFocusInitial>
       Submit
     </button>
-  </div>
+    </div>
 </form>

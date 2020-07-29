@@ -1,13 +1,18 @@
 h3 {
-  text-align: center;
+    text-align: center;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+     ::ng-deep quill-editor {
+        .ql-snow .ql-stroke {
+            stroke: #66859b;
+        }
+    }
+    .buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
 }
