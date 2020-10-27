@@ -1,6 +1,6 @@
 # Notes
 
-Notes is an CRUD app for taking notes, which I made in order to practice Angular. [This is the link](https://culinovic-a.github.io/Notes/) to the live version of Notes App.
+Notes is an CRUD app for taking notes, which I made in order to practice Angular. [This is the link](https://culinovic-a.github.io/Notes/) to the live version of Notes App. [![Build Status](https://travis-ci.com/culinovic-a/Notes.svg?branch=master)](https://travis-ci.com/culinovic-a/Notes)
 
 
 # Technologies 
